@@ -17,7 +17,7 @@ class Login extends MY_Controller {
 		{
 			$data = array(
 				'username' => $this->input->post('username'),
-				'is_logged_in' => true
+				'is_logged_in' => true,
 			);
 			$this->session->set_userdata($data);
 			redirect('home');
@@ -31,7 +31,12 @@ class Login extends MY_Controller {
 	function signup()
 	{
 		$data['main_content'] = 'signup_form';
-		$this->load->view('includes/template', $data);
+		$data['module'] = 'login';
+		$data['main_content'] = 'signup_form';
+
+		echo Modules::run('template/basic_template', $data);
+
+		// $this->load->view('includes/template', $data);
 	}
 	
 	function create_user()
