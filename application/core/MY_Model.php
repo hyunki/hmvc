@@ -1,6 +1,6 @@
 <?php
 /**
-* 
+* Basic CRUD
 */
 class MY_Model extends CI_Model
 {
@@ -11,7 +11,7 @@ class MY_Model extends CI_Model
 	protected $_order_by = '';
 	protected $_rules = [];
 	protected $_created_at = TRUE;
-	protected $_modified_at = '';
+	protected $_modified_at = TRUE;
 	protected $_deleted_at = TRUE;
 
 
@@ -20,7 +20,7 @@ class MY_Model extends CI_Model
 		parent::__construct();
 	}
 
-	public function get($id = NULL, $single = FLASE)
+	public function get($id = NULL, $single = FALSE)
 	{
 
 		if ($id != NULL) 
@@ -35,7 +35,7 @@ class MY_Model extends CI_Model
 			$method = 'result';
 		}
 
-		if (!count($this->db->ar_orderby))
+		if (!count($this->db->order_by($this->_order_by)))
 		{
 			$this->db->order_by($this->_order_by);
 		}
@@ -45,7 +45,7 @@ class MY_Model extends CI_Model
 
 	}
 
-	public function get_by($where, $single = FLASE)
+	public function get_by($where, $single = FALSE)
 	{
 		$this->db->where($where);
 
