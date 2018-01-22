@@ -73,7 +73,6 @@
                         Support Team
                         <small><i class="fa fa-clock-o"></i> 5 mins</small>
                       </h4>
-                      <p>Why not buy a new awesome theme?</p>
                     </a>
                   </li>
                   <!-- end message -->
@@ -401,21 +400,15 @@
         <small>Layout with collapsed sidebar on load</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="<?php echo base_url()?>"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Layout</a></li>
-        <li class="active">Collapsed Sidebar</li>
+        <li class="active"><?php echo '<a href='.base_url($module).'>'.$module.'</a>'.' > '.$view_file; ?></li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <div class="callout callout-info">
-        <h4>Tip!</h4>
-
-        <p>Add the sidebar-collapse class to the body tag to get this layout. You should combine this option with a
-          fixed layout if you have a long sidebar. Doing that will prevent your page content from getting stretched
-          vertically.</p>
-      </div>
+      
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
@@ -429,7 +422,7 @@
           </div>
         </div>
         <div class="box-body">
-          Start creating your amazing application!
+          <?php $this->load->view($module.'/'.$view_file); ?>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">

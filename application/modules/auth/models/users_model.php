@@ -2,6 +2,13 @@
 
 class users_model extends MY_Model {
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->library('encryption');
+		$key = $this->encryption->create_key(16);
+	}
+
 	function validate()
 	{
 		$this->db->where('email_address', $this->input->post('email_address'));

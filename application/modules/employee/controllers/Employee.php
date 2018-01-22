@@ -13,13 +13,18 @@ class Employee extends MY_Controller
 
 	function index()
 	{
-		$this->load->view('index');
+		$this->load->model('employee_m');
+		$data['module'] = 'employee';
+		$data['view'] = 'index';
+		echo Modules::run('template/admin', $data);
 	}
 
 	function create()
 	{
-
-		$this->load->view('create');
+		$data['module'] = 'employee';
+		$data['view'] = 'create';
+		echo Modules::run('template/admin', $data);
+		
 
 	}
 

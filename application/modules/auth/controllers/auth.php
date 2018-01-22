@@ -1,33 +1,30 @@
 <?php
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends MY_Controller {
+class Auth extends MY_Controller {
 
 	function __construct() {
 		parent::__construct();
-		$this->load->library('form_validation');
+		$this->load->model('users_model');
 	}
 	
 	function index()
 	{
-		$data['main_content'] = 'login_form';
-		$this->load->view('includes/template', $data);		
+		$this->load->view('login_form');
 	}
 	
 	function validate_credentials()
 	{		
-		$this->load->model('users_model');
 		$query = $this->users_model->validate();
 		
 		if($query) // if the user's credentials validated...
 		{
 			$data = array(
-				'username' => $this->input->post('username'),
+				'email_address' => $this->input->post('email_address'),
 				'is_logged_in' => true
 			);
 			$this->session->set_userdata($data);
-			redirect('home');
+			redirect(base_url());
 		}
 		else // incorrect username or password
 		{
@@ -81,4 +78,29 @@ class Login extends MY_Controller {
 		$this->index();
 	}
 
+	function members_area()
+	{
+		$this->load->view('logged_in_area');
+	}
+	
+	function another_page() // just for sample
+	{
+		echo 'good. you\'re logged in.';
+	}
+	
+	function is_logged_in()
+	{
+		$is_logged_in = $this->session->userdata('is_logged_in');
+		if(!isset($is_logged_in) || $is_logged_in != true)
+		{
+			echo 'You don\'t have permission to access this page. <a href="'.base_url().'/auth">Login</a>';	
+			die();		
+			//$this->load->view('login_form');
+		}		
+	}	
+
+
 }
+
+/* End of file auth.php */
+/* Location: ./application/modules/auth/controllers/auth.php */
