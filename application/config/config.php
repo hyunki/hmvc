@@ -23,7 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+<<<<<<< HEAD
 $config['base_url'] = 'https://localhost/hmvc';
+=======
+$config['base_url'] = 'http://localhost/hmvc/';
+>>>>>>> 29c5769424dc925c7a2c9b60907432bf6e7824e0
 
 /*
 |--------------------------------------------------------------------------
@@ -378,7 +382,11 @@ $config['encryption_key'] = '';
 |
 */
 $config['sess_driver'] = 'database';
+<<<<<<< HEAD
 $config['sess_cookie_name'] = 'ci_session';
+=======
+$config['sess_cookie_name'] = 'ci_sessions';
+>>>>>>> 29c5769424dc925c7a2c9b60907432bf6e7824e0
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = 'ci_sessions';
 $config['sess_match_ip'] = FALSE;

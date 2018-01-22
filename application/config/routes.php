@@ -1,6 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+<<<<<<< HEAD
+=======
+
+$route['default_controller'] = 'Page';
+$route['404_override'] = '';
+$route['translate_uri_dashes'] = FALSE;
+
+>>>>>>> 29c5769424dc925c7a2c9b60907432bf6e7824e0
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
